@@ -1,0 +1,27 @@
+{
+  "id": "bc-template-dscopscenter",
+  "description": "common monitoring service for the cluster that can be used by other barclamps",
+  "attributes": {
+    "dscopscenter": {
+      "admin_ip_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").address",
+      "admin_interface_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").interface"
+    }
+  },
+  "deployment": {
+    "dscopscenter": {
+      "crowbar-revision": 0,
+      "elements": {},
+      "element_order": [
+        [ "dscopscenter-server" ]
+      ],
+      "config": {
+        "environment": "dscopscenter-base-config",
+        "mode": "full",
+        "transitions": false,
+        "transition_list": [
+        ]
+      }
+    }
+  }
+}
+
